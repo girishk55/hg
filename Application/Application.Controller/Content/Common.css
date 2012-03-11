@@ -1,0 +1,137 @@
+﻿.column
+{
+    float: left;
+    width: 50%;
+    padding: 0;
+    margin: 5px 0;
+}
+
+form ol {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+form li {
+    padding: 1px;
+    margin: 3px;
+}
+
+form input[type="text"] 
+{
+    width: 100%;
+}
+
+#addorder {
+    width: 300px;
+    float: left;
+    width:30%;
+}
+
+#categories { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    float:left;
+    width: 100%; 
+    font-size:small;
+    font-weight:bold;
+}
+
+#categories li { 
+    padding: 1px; 
+    float: left;
+    width: 300px;
+    text-align: justify;
+    height:130px;
+    background:white;
+}
+
+#categories li h1 
+{
+    padding: 0;
+    margin: 0;
+    text-align:center;
+    background:Gray;
+    border:none;
+}
+
+#products { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    float:left;
+    width: 100%; 
+    font-size:small;
+    font-weight:bold;
+}
+
+#products li { 
+    padding: 1px; 
+    float: left;
+    width: 200px;
+    text-align: left;
+    height:140px;
+    background:#E0F2F7;
+}
+
+#products li h5 
+{
+    padding: 0;
+    margin: 0;
+    text-align:center;
+    font-weight:bold;
+    background:#4d9aee;
+    border:none;
+}
+
+#CartProducts { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    float:left;
+    width: 100%; 
+    font-size:small;
+    font-weight:bold;
+}
+
+#CartProducts li { 
+    padding: 1px; 
+    float: left;
+    width: 1200px;
+    text-align: left;
+    height:50px;
+    background:#E0F2F7;
+}
+
+#CartProducts li h5 
+{
+    padding: 0;
+    margin: 0;
+    text-align:center;
+    font-weight:bold;
+    background:#4d9aee;
+    border:none;
+}
+
+.menuButton
+{
+}
+.AddToCart
+{
+    padding-left : 20px;
+    vertical-align:top;
+}
+.subMenu
+{
+    padding-left : 10px;
+    padding-right : 10px;
+}
+
+.quantityText
+{
+    width:30px;
+    font-size:smaller;
+    height:15px;
+}
+
