@@ -30,6 +30,11 @@ namespace Application.Controller
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            routes.MapHttpRoute(
+                name: "ValidateCustomer",
+                routeTemplate: "api/{controller}/{id}/{password}"
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

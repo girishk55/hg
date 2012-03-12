@@ -26,8 +26,14 @@ namespace Application.Controller.Resolver
             builder.RegisterType<LogService>().As<ILogService>().InstancePerLifetimeScope();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerDependency();
             builder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>().InstancePerLifetimeScope();
-            builder.RegisterType<ProductManager>().As<IProductManager>().InstancePerDependency();
-            builder.RegisterType<ProductService>().As<IProductService>().InstancePerDependency();
+            //builder.RegisterType<ProductManager>().As<IProductManager>().InstancePerDependency();
+            //builder.RegisterType<ProductService>().As<IProductService>().InstancePerDependency();
+            builder.RegisterAssemblyTypes(typeof(ProductService).Assembly)
+            .Where(t => t.Name.EndsWith("Service"))
+            .AsImplementedInterfaces().InstancePerDependency();
+            builder.RegisterAssemblyTypes(typeof(ProductManager).Assembly)
+            .Where(t => t.Name.EndsWith("Manager"))
+            .AsImplementedInterfaces().InstancePerDependency();    
             builder.RegisterAssemblyTypes(typeof(CustomerRepository).Assembly)
             .Where(t => t.Name.EndsWith("Repository"))
             .AsImplementedInterfaces().InstancePerDependency();      

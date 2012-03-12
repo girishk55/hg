@@ -2,10 +2,211 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Application.DAL;
+using Application.Repository;
+using Application.Model;
+using System.Security.Cryptography;
+using System.Web.Security;
+using Application.Model.DTO;
 
 namespace Application.Service
 {
     public class CustomerService : ICustomerService
     {
+        IUnitOfWork _unitOfWork;
+        ICustomerRepository _customerRepository;
+        IAddressRepository _addressRepository;
+        ICustomerAddressRepository _customerAddressRepository;
+
+        public CustomerService(
+            IUnitOfWork unitOfWork,
+            ICustomerRepository customerRepository,
+            ICustomerAddressRepository customerAddressRepository,
+            IAddressRepository addressRepository)
+        {
+            this._unitOfWork = unitOfWork;
+            this._customerRepository = customerRepository;
+            this._customerAddressRepository = customerAddressRepository;
+            this._addressRepository = addressRepository;
+        }
+
+        //Below method will create any random strigs of given size. Basically this type of algorithm reads the memory at random locations to form
+        //the complete random string each time
+        private static string CreateSalt(int size)
+        {
+            // Generate a cryptographic random number using the cryptographic
+            // service provider
+            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            byte[] buff = new byte[size];
+            rng.GetBytes(buff);
+            // Return a Base64 string representation of the random number
+            return Convert.ToBase64String(buff);
+        }
+
+        //The salt created in above function will be appended to the real password
+        //and again SHA1 algorithm will be used to generate the hash which will eventually stored in database
+        private static string CreatePasswordHash(string pwd, string salt)
+        {
+            string saltAndPwd = String.Concat(pwd, salt);
+            string hashedPwd =  FormsAuthentication.HashPasswordForStoringInConfigFile(saltAndPwd, "SHA1");
+            hashedPwd = String.Concat(hashedPwd, salt);
+            return hashedPwd;
+        }
+
+        public Customer GeCustomerByCustomerID(int id)
+        {
+            Customer objCustomer = _customerRepository.GetById(id);
+            return objCustomer;
+        }
+
+        public Customer ValidateCustomer(int id, string password)
+        {
+            Customer objCustomer = _customerRepository.GetById(id);
+            string strPasswordHash = objCustomer.PasswordHash;
+            string strPasswordSalt = strPasswordHash.Substring(strPasswordHash.Length - 8); 
+            string strPasword = CreatePasswordHash(password, strPasswordSalt);
+
+            if (strPasword.Equals(strPasswordHash))
+                return objCustomer;
+            else
+                return null;
+        }
+
+        public CustomerDTO SaveOrUpdateCustomer(CustomerDTO customer)
+        {
+            string passwordSalt = CreateSalt(5);
+            string pasword = CreatePasswordHash(customer.Password, passwordSalt);
+
+            if (customer.CustomerID != 0)
+            {
+                var objCustomer = _customerRepository.GetById(customer.CustomerID);
+                objCustomer.NameStyle = customer.NameStyle;
+                objCustomer.Title = customer.Title;
+                objCustomer.FirstName = customer.FirstName;
+                objCustomer.MiddleName = customer.MiddleName;
+                objCustomer.LastName = customer.LastName;
+                objCustomer.Suffix = customer.Suffix;
+                objCustomer.CompanyName = customer.CompanyName;
+                objCustomer.SalesPerson = customer.SalesPerson;
+                objCustomer.EmailAddress = customer.EmailAddress;
+                objCustomer.Phone = customer.Phone;
+                objCustomer.PasswordHash = pasword;
+                objCustomer.PasswordSalt = passwordSalt;
+                objCustomer.ModifiedDate = DateTime.Now;
+                objCustomer.rowguid = Guid.NewGuid();
+
+                _customerRepository.Update(objCustomer);
+                _unitOfWork.Commit();
+                SaveOrUpdateAddress(customer, objCustomer.CustomerID);
+                return customer;
+            }
+            else
+            {
+                var objCustomer = new Customer();
+                objCustomer.NameStyle = customer.NameStyle;
+                objCustomer.Title = customer.Title;
+                objCustomer.FirstName = customer.FirstName;
+                objCustomer.MiddleName = customer.MiddleName;
+                objCustomer.LastName = customer.LastName;
+                objCustomer.Suffix = customer.Suffix;
+                objCustomer.CompanyName = customer.CompanyName;
+                objCustomer.SalesPerson = customer.SalesPerson;
+                objCustomer.EmailAddress = customer.EmailAddress;
+                objCustomer.Phone = customer.Phone;
+                objCustomer.PasswordHash = pasword;
+                objCustomer.PasswordSalt = passwordSalt;
+                objCustomer.ModifiedDate = DateTime.Now;
+                objCustomer.rowguid = Guid.NewGuid();
+                _customerRepository.Add(objCustomer);
+                _unitOfWork.Commit();
+                SaveOrUpdateAddress(customer, objCustomer.CustomerID);
+                return customer;
+            }
+        }
+
+        private void SaveOrUpdateAddress(CustomerDTO customer, int customerID)
+        {
+            List<CustomerAddress> lstCustomerAddress = _customerAddressRepository.GetMany(x => x.CustomerID == customer.CustomerID).ToList();
+
+            if (lstCustomerAddress.Count == 0)
+            {
+                Address objBillingAddress = new Address();
+                objBillingAddress.AddressLine1 = customer.BillingAddressLine1;
+                objBillingAddress.AddressLine2 = customer.BillingAddressLine2; 
+                objBillingAddress.City = customer.BillingCity ;         
+                objBillingAddress.StateProvince = customer.BillingStateProvince; 
+                objBillingAddress.CountryRegion = customer.BillingCountryRegion ;
+                objBillingAddress.PostalCode = customer.BillingPostalCode;
+                objBillingAddress.ModifiedDate = DateTime.Now;
+                objBillingAddress.rowguid = Guid.NewGuid();
+                _addressRepository.Add(objBillingAddress);
+                _unitOfWork.Commit();
+
+                CustomerAddress objCustomerBillingAddress = new CustomerAddress();
+                objCustomerBillingAddress.CustomerID = customerID;
+                objCustomerBillingAddress.AddressID = objBillingAddress.AddressID;
+                objCustomerBillingAddress.AddressType = "Main Office";
+                objCustomerBillingAddress.ModifiedDate = DateTime.Now;
+                objCustomerBillingAddress.rowguid = Guid.NewGuid();
+                _customerAddressRepository.Add(objCustomerBillingAddress);
+                _unitOfWork.Commit();
+
+                Address objShippingAddress = new Address();
+                objShippingAddress.AddressLine1 = customer.ShippingAddressLine1;
+                objShippingAddress.AddressLine2 = customer.ShippingAddressLine2;
+                objShippingAddress.City = customer.ShippingCity;
+                objShippingAddress.StateProvince = customer.ShippingStateProvince;
+                objShippingAddress.CountryRegion = customer.ShippingCountryRegion;
+                objShippingAddress.PostalCode = customer.ShippingPostalCode;
+                objShippingAddress.ModifiedDate = DateTime.Now;
+                objShippingAddress.rowguid = Guid.NewGuid();
+                _addressRepository.Add(objShippingAddress);
+                _unitOfWork.Commit();
+
+                CustomerAddress objCustomerShippingAddress = new CustomerAddress();
+                objCustomerShippingAddress.CustomerID = customerID;
+                objCustomerShippingAddress.AddressID = objShippingAddress.AddressID;
+                objCustomerShippingAddress.AddressType = "Shipping";
+                objCustomerShippingAddress.ModifiedDate = DateTime.Now;
+                objCustomerShippingAddress.rowguid = Guid.NewGuid();
+                _customerAddressRepository.Add(objCustomerShippingAddress);
+                _unitOfWork.Commit();
+            }
+            else
+            {
+                foreach (CustomerAddress objCustomerAddress in lstCustomerAddress)
+                {
+                    Address objAddress = _addressRepository.GetById(objCustomerAddress.AddressID);
+
+                    if (objCustomerAddress.AddressType.Equals("Shipping"))
+                    {
+                        objAddress.AddressLine1 = customer.ShippingAddressLine1;
+                        objAddress.AddressLine2 = customer.ShippingAddressLine2;
+                        objAddress.City = customer.ShippingCity;
+                        objAddress.StateProvince = customer.ShippingStateProvince;
+                        objAddress.CountryRegion = customer.ShippingCountryRegion;
+                        objAddress.PostalCode = customer.ShippingPostalCode;
+                        objAddress.ModifiedDate = DateTime.Now;
+                        objAddress.rowguid = Guid.NewGuid();
+                        _addressRepository.Add(objAddress);
+                        _unitOfWork.Commit();
+                    }
+                    else
+                    {
+                        objAddress.AddressLine1 = customer.BillingAddressLine1;
+                        objAddress.AddressLine2 = customer.BillingAddressLine2;
+                        objAddress.City = customer.BillingCity;
+                        objAddress.StateProvince = customer.BillingStateProvince;
+                        objAddress.CountryRegion = customer.BillingCountryRegion;
+                        objAddress.PostalCode = customer.BillingPostalCode;
+                        objAddress.ModifiedDate = DateTime.Now;
+                        objAddress.rowguid = Guid.NewGuid();
+                        _addressRepository.Add(objAddress);
+                        _unitOfWork.Commit();
+                    }
+                }
+            }
+        }
+
     }
 }

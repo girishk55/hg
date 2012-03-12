@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Application.Repository
 {
-    public class CustomerCustomerAddressRepository : Repository<CustomerAddress>, ICustomerCustomerAddressRepository
+    public class CustomerAddressRepository : Repository<CustomerAddress>, ICustomerAddressRepository
     {
         private AdventureWorksEntities dataContext;
 
@@ -15,7 +15,7 @@ namespace Application.Repository
             private set;
         }
 
-        public CustomerCustomerAddressRepository(IDatabaseFactory databaseFactory)
+        public CustomerAddressRepository(IDatabaseFactory databaseFactory)
             : base(databaseFactory)
         {
             DatabaseFactory = databaseFactory;
@@ -51,7 +51,7 @@ namespace Application.Repository
         }
 
     }
-    public interface ICustomerCustomerAddressRepository : IRepository<CustomerAddress>
+    public interface ICustomerAddressRepository : IRepository<CustomerAddress>
     {
         PagedResult<CustomerAddress> GetAllCustomerAddresses(int page, int pageSize);
     }

@@ -11,3 +11,16 @@ D:\AnandPandey\Article\Code-Source\29Feb\Application\Application.Manager\bin\Deb
 D:\AnandPandey\Article\Code-Source\29Feb\Application\Application.Manager\obj\Debug\ResolveAssemblyReference.cache
 D:\AnandPandey\Article\Code-Source\29Feb\Application\Application.Manager\obj\Debug\Application.Manager.dll
 D:\AnandPandey\Article\Code-Source\29Feb\Application\Application.Manager\obj\Debug\Application.Manager.pdb
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\obj\Debug\ResolveAssemblyReference.cache
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\obj\Debug\Application.Manager.dll
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\obj\Debug\Application.Manager.pdb
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\bin\Debug\Application.Manager.dll
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\bin\Debug\Application.Manager.pdb
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\bin\Debug\Application.Model.dll
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\bin\Debug\Application.Service.dll
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\bin\Debug\Application.DAL.dll
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\bin\Debug\Application.Repository.dll
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\bin\Debug\Application.Model.pdb
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\bin\Debug\Application.Service.pdb
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\bin\Debug\Application.DAL.pdb
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Manager\bin\Debug\Application.Repository.pdb

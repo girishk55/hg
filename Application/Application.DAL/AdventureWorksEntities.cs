@@ -1,6 +1,8 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Application.Model;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace Application.DAL
 {
@@ -15,7 +17,21 @@ namespace Application.DAL
 
         public virtual void Commit()
         {
-            base.SaveChanges();
+            try
+            {
+                base.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Class: {0}, Property: {1}, Error: {2}", validationErrors.Entry.Entity.GetType().FullName,
+                                      validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
