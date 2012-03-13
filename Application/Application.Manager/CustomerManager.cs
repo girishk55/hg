@@ -23,7 +23,7 @@ namespace Application.Manager
             return _customerService.GeCustomerByCustomerID(id);;
         }
 
-        public Customer ValidateCustomer(int id, string password)
+        public CustomerDTO ValidateCustomer(int id, string password)
         {
             return _customerService.ValidateCustomer(id, password);
         }

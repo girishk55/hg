@@ -10,95 +10,219 @@
 </head>
 <body>
     <div id="divMain">
-    <table>
-        <tr>
-            <td>Customer ID :</td>
-            <td><input type="text" id="txtUserID" /></td>
-            <td>Password :</td>
-            <td><input type="password" id="pwdPassword" /></td>
-            <td><a href="#" class="Login" title="Sign in" >Login</a></td>
-            <td>Not a customer <a href="#" title="Register for a new account" >Register</a> here</td>
-        </tr>
-    </table>
-    <form method="post" id="customerInformation" style="display: block">
-    <fieldset>
-        <legend>Add/Update customer</legend>
-        <table>
-            <tr>
-             <td>Customer ID</td>
-             <td><input id="txtCustomerID" type="text" readonly="readonly" name="CustomerID" value="0" /></td>
-             <td>Password</td>
-             <td><input id="txtPassword" type="password" name="Password"/></td>
-             <td>Confirm Password</td>
-             <td><input id="txtConfirmPassword" type="password" name="ConfirmPassword"/></td>
-            </tr>
-            <tr>
-             <td>Title</td>
-             <td><input id="txtTitle" type="text" name="Title" /></td>
-             <td>Suffix</td>
-             <td><input id="txtSuffix" type="text" name="Suffix" /></td>
-            </tr>
-            <tr>
-             <td>First Name</td>
-             <td><input id="txtFirstName" type="text" name="FirstName" /></td>
-             <td>Middle Name</td>
-             <td><input id="txtMiddleName" type="text" name="MiddleName"/></td>
-             <td>Last Name</td>
-             <td><input id="txtLastName" type="text" name="LastName"/></td>
-            </tr>
-            <tr>
-             <td>Phone</td>
-             <td><input id="txtPhone" type="text" name="Phone"/></td>
-             <td>Company Name</td>
-             <td><input id="txtCompanyName" type="text" name="CompanyName" /></td>
-             <td>Email Address</td>
-             <td><input id="txtEmailAddress" type="text" name="EmailAddress"/></td>
-            </tr>
-            <tr>
-             <td colspan="6">Billing Address :</td>
-            </tr>
-            <tr>
-             <td>Address Line1</td>
-             <td><input id="txtBAddressLine1" type="text" name="BillingAddressLine1"/></td>
-             <td>Address Line2</td>
-             <td><input id="txtBAddressLine2" type="text" name="BillingAddressLine2" /></td>
-             <td>City</td>
-             <td><input id="txtBCity" type="text" name="BillingCity"/></td>
-            </tr>
-            <tr>
-             <td>State Province</td>
-             <td><input id="txtBStateProvince" type="text" name="BillingStateProvince"/></td>
-             <td>Country Region</td>
-             <td><input id="txtBCountryRegion" type="text" name="BillingCountryRegion" /></td>
-             <td>Postal Code</td>
-             <td><input id="txtBPostalCode" type="text" name="BillingPostalCode"/></td>
-            </tr>
-            <tr>
-             <td colspan="6">Shipping Address :</td>
-            </tr>
-            <tr>
-             <td>Address Line1</td>
-             <td><input id="txtSAddressLine1" type="text" name="ShippingAddressLine1"/></td>
-             <td>Address Line2</td>
-             <td><input id="txtSAddressLine2" type="text" name="ShippingAddressLine2" /></td>
-             <td>City</td>
-             <td><input id="txtSCity" type="text" name="ShippingCity"/></td>
-            </tr>
-            <tr>
-             <td>State Province</td>
-             <td><input id="txtSStateProvince" type="text" name="ShippingStateProvince"/></td>
-             <td>Country Region</td>
-             <td><input id="txtSCountryRegion" type="text" name="ShippingCountryRegion" /></td>
-             <td>Postal Code</td>
-             <td><input id="txtSPostalCode" type="text" name="ShippingPostalCode"/></td>
-            </tr>
-
-        </table>
-        <input type="submit" id="btnAdd" value="Add" />
-        <input type="button" id="btnReset" value="Reset" />
-    </fieldset>
-    </form>
-
+        <div id="divMenu" style="background-color: Gray; width: 100%; color:White; margin-bottom:10px;">
+            <table id="tblLogin">
+                <tr>
+                    <td>
+                        Customer ID :
+                    </td>
+                    <td>
+                        <input type="text" id="txtUserID" />
+                    </td>
+                    <td>
+                        Password :
+                    </td>
+                    <td>
+                        <input type="password" id="pwdPassword" />
+                    </td>
+                    <td>
+                        <a href="#" class="Login" title="Sign in">Login</a>
+                    </td>
+                    <td>
+                        Not a customer <a href="#" title="Register for a new account" onclick="RegisterNewCustomer();">Register</a> here
+                    </td>
+                </tr>
+            </table>
+            <table id="tblLogout" style="display: none;">
+                <tr>
+                    <td>
+                        !!! Welcome
+                    </td>
+                    <td>
+                        <label id="lblName" />
+                    </td>
+                    <td>
+                        !!!
+                    </td>
+                    <td>
+                        <a href="Products.htm" title="Logout" onclick="ClearForm();">Logout</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <form method="post" id="customerInformation" style="display: none">
+            <fieldset>
+            <legend>Customer Information :</legend>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 15%;">
+                        Customer ID
+                    </td>
+                    <td style="width: 15%;">
+                        <input id="txtCustomerID" type="text" readonly="readonly" name="CustomerID" value="0" />
+                    </td>
+                    <td style="width: 15%;">
+                        Password
+                    </td>
+                    <td style="width: 15%;">
+                        <input id="txtPassword" type="password" name="Password" />
+                    </td>
+                    <td style="width: 15%;">
+                        Confirm Password
+                    </td>
+                    <td style="width: 15%;">
+                        <input id="txtConfirmPassword" type="password" name="ConfirmPassword" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        <input id="txtTitle" type="text" name="Title" />
+                    </td>
+                    <td>
+                        Suffix
+                    </td>
+                    <td>
+                        <input id="txtSuffix" type="text" name="Suffix" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        First Name
+                    </td>
+                    <td>
+                        <input id="txtFirstName" type="text" name="FirstName" />
+                    </td>
+                    <td>
+                        Middle Name
+                    </td>
+                    <td>
+                        <input id="txtMiddleName" type="text" name="MiddleName" />
+                    </td>
+                    <td>
+                        Last Name
+                    </td>
+                    <td>
+                        <input id="txtLastName" type="text" name="LastName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Phone
+                    </td>
+                    <td>
+                        <input id="txtPhone" type="text" name="Phone" />
+                    </td>
+                    <td>
+                        Company Name
+                    </td>
+                    <td>
+                        <input id="txtCompanyName" type="text" name="CompanyName" />
+                    </td>
+                    <td>
+                        Email Address
+                    </td>
+                    <td>
+                        <input id="txtEmailAddress" type="text" name="EmailAddress" />
+                    </td>
+                </tr>
+                </table>
+        </fieldset>
+            <fieldset>
+            <legend>Billing Address :</legend>
+                <table style="width: 100%;">
+                <tr>
+                    <td style="width: 15%;">
+                        Address Line1
+                    </td>
+                    <td style="width: 15%;">
+                        <input id="txtBAddressLine1" type="text" name="BillingAddressLine1" />
+                    </td>
+                    <td style="width: 15%;">
+                        Address Line2
+                    </td>
+                    <td style="width: 15%;">
+                        <input id="txtBAddressLine2" type="text" name="BillingAddressLine2" />
+                    </td>
+                    <td style="width: 15%;">
+                        City
+                    </td>
+                    <td style="width: 15%;">
+                        <input id="txtBCity" type="text" name="BillingCity" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        State Province
+                    </td>
+                    <td>
+                        <input id="txtBStateProvince" type="text" name="BillingStateProvince" />
+                    </td>
+                    <td>
+                        Country Region
+                    </td>
+                    <td>
+                        <input id="txtBCountryRegion" type="text" name="BillingCountryRegion" />
+                    </td>
+                    <td>
+                        Postal Code
+                    </td>
+                    <td>
+                        <input id="txtBPostalCode" type="text" name="BillingPostalCode" />
+                    </td>
+                </tr>
+                </table>
+         </fieldset>
+             <fieldset>
+            <legend>Shipping Address :</legend>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 15%;">
+                        Address Line1
+                    </td>
+                    <td style="width: 15%;">
+                        <input id="txtSAddressLine1" type="text" name="ShippingAddressLine1" />
+                    </td>
+                    <td style="width: 15%;">
+                        Address Line2
+                    </td>
+                    <td style="width: 15%;">
+                        <input id="txtSAddressLine2" type="text" name="ShippingAddressLine2" />
+                    </td>
+                    <td style="width: 15%;">
+                        City
+                    </td>
+                    <td style="width: 15%;">
+                        <input id="txtSCity" type="text" name="ShippingCity" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        State Province
+                    </td>
+                    <td>
+                        <input id="txtSStateProvince" type="text" name="ShippingStateProvince" />
+                    </td>
+                    <td>
+                        Country Region
+                    </td>
+                    <td>
+                        <input id="txtSCountryRegion" type="text" name="ShippingCountryRegion" />
+                    </td>
+                    <td>
+                        Postal Code
+                    </td>
+                    <td>
+                        <input id="txtSPostalCode" type="text" name="ShippingPostalCode" />
+                    </td>
+                </tr>
+            </table>
+         </fieldset>
+            <input type="submit" id="btnContinue" value="Continue" />
+            <input type="reset" id="btnReset" value="Reset" />
+        </form>
     </div>
 </body>
 </html>

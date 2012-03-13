@@ -10,7 +10,7 @@ namespace Application.Manager
     public interface ICustomerManager
     {
         Customer GeCustomerByCustomerID(int id);
-        Customer ValidateCustomer(int id, string password);
+        CustomerDTO ValidateCustomer(int id, string password);
         CustomerDTO SaveOrUpdateCustomer(CustomerDTO customer);
     }
 }

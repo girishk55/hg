@@ -48,7 +48,7 @@ namespace Application.Service
         private static string CreatePasswordHash(string pwd, string salt)
         {
             string saltAndPwd = String.Concat(pwd, salt);
-            string hashedPwd =  FormsAuthentication.HashPasswordForStoringInConfigFile(saltAndPwd, "SHA1");
+            string hashedPwd = FormsAuthentication.HashPasswordForStoringInConfigFile(saltAndPwd, "SHA1");
             hashedPwd = String.Concat(hashedPwd, salt);
             return hashedPwd;
         }
@@ -59,15 +59,15 @@ namespace Application.Service
             return objCustomer;
         }
 
-        public Customer ValidateCustomer(int id, string password)
+        public CustomerDTO ValidateCustomer(int id, string password)
         {
             Customer objCustomer = _customerRepository.GetById(id);
             string strPasswordHash = objCustomer.PasswordHash;
-            string strPasswordSalt = strPasswordHash.Substring(strPasswordHash.Length - 8); 
+            string strPasswordSalt = strPasswordHash.Substring(strPasswordHash.Length - 8);
             string strPasword = CreatePasswordHash(password, strPasswordSalt);
 
             if (strPasword.Equals(strPasswordHash))
-                return objCustomer;
+                return CreateCustomerDTO(objCustomer);
             else
                 return null;
         }
@@ -132,10 +132,10 @@ namespace Application.Service
             {
                 Address objBillingAddress = new Address();
                 objBillingAddress.AddressLine1 = customer.BillingAddressLine1;
-                objBillingAddress.AddressLine2 = customer.BillingAddressLine2; 
-                objBillingAddress.City = customer.BillingCity ;         
-                objBillingAddress.StateProvince = customer.BillingStateProvince; 
-                objBillingAddress.CountryRegion = customer.BillingCountryRegion ;
+                objBillingAddress.AddressLine2 = customer.BillingAddressLine2;
+                objBillingAddress.City = customer.BillingCity;
+                objBillingAddress.StateProvince = customer.BillingStateProvince;
+                objBillingAddress.CountryRegion = customer.BillingCountryRegion;
                 objBillingAddress.PostalCode = customer.BillingPostalCode;
                 objBillingAddress.ModifiedDate = DateTime.Now;
                 objBillingAddress.rowguid = Guid.NewGuid();
@@ -208,5 +208,48 @@ namespace Application.Service
             }
         }
 
+        private CustomerDTO CreateCustomerDTO(Customer customer)
+        {
+            CustomerDTO objCustomerDTO = new CustomerDTO();
+            objCustomerDTO.CustomerID = customer.CustomerID;
+            objCustomerDTO.NameStyle = customer.NameStyle;
+            objCustomerDTO.Title = customer.Title;
+            objCustomerDTO.FirstName = customer.FirstName;
+            objCustomerDTO.MiddleName = customer.MiddleName;
+            objCustomerDTO.LastName = customer.LastName;
+            objCustomerDTO.Suffix = customer.Suffix;
+            objCustomerDTO.CompanyName = customer.CompanyName;
+            objCustomerDTO.SalesPerson = customer.SalesPerson;
+            objCustomerDTO.EmailAddress = customer.EmailAddress;
+            objCustomerDTO.Phone = customer.Phone;
+            objCustomerDTO.Password = customer.PasswordHash;
+
+            List<CustomerAddress> lstCustomerAddress = _customerAddressRepository.GetMany(x => x.CustomerID == customer.CustomerID).ToList();
+
+            foreach (CustomerAddress customerAddress in lstCustomerAddress)
+            {
+                Address objAddress = _addressRepository.GetById(customerAddress.AddressID);
+
+                if (customerAddress.AddressType.Equals("Shipping"))
+                {
+                    objCustomerDTO.ShippingAddressLine1 = objAddress.AddressLine1;
+                    objCustomerDTO.ShippingAddressLine2 = objAddress.AddressLine2;
+                    objCustomerDTO.ShippingCity = objAddress.City;
+                    objCustomerDTO.ShippingStateProvince = objAddress.StateProvince;
+                    objCustomerDTO.ShippingCountryRegion = objAddress.CountryRegion;
+                    objCustomerDTO.ShippingPostalCode = objAddress.PostalCode;
+                }
+                else
+                {
+                    objCustomerDTO.BillingAddressLine1 = objAddress.AddressLine1;
+                    objCustomerDTO.BillingAddressLine2 = objAddress.AddressLine2;
+                    objCustomerDTO.BillingCity = objAddress.City;
+                    objCustomerDTO.BillingStateProvince = objAddress.StateProvince;
+                    objCustomerDTO.BillingCountryRegion = objAddress.CountryRegion;
+                    objCustomerDTO.BillingPostalCode = objAddress.PostalCode;
+                }
+            }
+            return objCustomerDTO;
+        }
     }
 }

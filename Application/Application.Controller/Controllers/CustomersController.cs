@@ -38,7 +38,7 @@ namespace Application.Controller.Controllers
         /// </summary>
         /// <returns></returns>
         [EnableCors]
-        public Customer GetValidateCustomer(int id, string password)
+        public CustomerDTO GetValidateCustomer(int id, string password)
         {
             loggerService.Logger().Info("Calling with parameter as : id and password: " + id + " and " + password);
             return _customerManager.ValidateCustomer(id, password);
