@@ -3,6 +3,8 @@ var customersAddress = "/api/customers";
 var URL = "http://localhost:50284/api/";
 
 $(function () {
+    jQuery("#customerInformation").validationEngine();
+    var thequerystring = getUrlVars()["cart"];
     $(".Login").live("click", function () {
         var userName = $("#txtUserID").val();
         var password = $("#pwdPassword").val();
@@ -56,7 +58,9 @@ $(function () {
                         $("#txtSStateProvince").val(value.ShippingStateProvince);
                         $("#txtSCountryRegion").val(value.ShippingCountryRegion);
                         $("#txtSPostalCode").val(value.ShippingPostalCode);
-                        $("#btnReset").val("Update");
+                        $("#btnReset").hide();
+                        $("#btnRegister").val("Update");
+                        $("#btnsubmitOrder").show();
                     }
                 }
             });
@@ -64,15 +68,24 @@ $(function () {
         return false;
     });
 
+    $(".btnsubmitOrder").live("click", function () {
+
+    });
+
     $("#customerInformation").submit(function () {
-        //if (ValidateForm()) {
-        $.post(
+        if (jQuery('#customerInformation').validationEngine('validate')) {
+            $.post(
                     customersAddress,
                     $("#customerInformation").serialize(),
                     function (value) {
                         if ($("#txtCustomerID").val() == 0) {
                             alert("Record added successfully.");
-                            $("form")[0].reset();
+                            $("#txtCustomerID").val(value);
+                            $("#btnRegister").val("Update");
+                            $("#btnReset").hide();
+                            $("#tblLogin").hide();
+                            $("#tblLogout").show();
+                            document.getElementById("lblName").innerHTML = $("#txtFirstName").val() + " " + $("#txtLastName").val();
                         }
                         else {
                             alert("Record updated successfully.");
@@ -80,7 +93,7 @@ $(function () {
                     },
                     "json"
                 );
-        //}
+        }
         return false;
     });
 });
@@ -94,4 +107,15 @@ function ClearForm() {
 function RegisterNewCustomer() {
     ClearForm();
     $('#customerInformation').show();
-}                                                      
+}
+
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}                                                     

@@ -11,6 +11,6 @@ namespace Application.Manager
     {
         Customer GeCustomerByCustomerID(int id);
         CustomerDTO ValidateCustomer(int id, string password);
-        CustomerDTO SaveOrUpdateCustomer(CustomerDTO customer);
+        int SaveOrUpdateCustomer(CustomerDTO customer);
     }
 }

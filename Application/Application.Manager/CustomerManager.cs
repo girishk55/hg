@@ -28,7 +28,7 @@ namespace Application.Manager
             return _customerService.ValidateCustomer(id, password);
         }
 
-        public CustomerDTO SaveOrUpdateCustomer(CustomerDTO customer)
+        public int SaveOrUpdateCustomer(CustomerDTO customer)
         {
             return _customerService.SaveOrUpdateCustomer(customer);
         }

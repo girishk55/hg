@@ -7,6 +7,10 @@
     <script src="../Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
     <script src="../Scripts/jquery.tmpl.js" type="text/javascript"></script>
     <script src="../Scripts/ViewsJS/Checkout.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.validationEngine-en.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.validationEngine.js" type="text/javascript"></script>
+    <link href="../Content/template.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div id="divMain">
@@ -65,13 +69,13 @@
                         Password
                     </td>
                     <td style="width: 15%;">
-                        <input id="txtPassword" type="password" name="Password" />
+                        <input id="txtPassword" class="validate[required,maxSize[50]] text-input" type="password" name="Password" />
                     </td>
                     <td style="width: 15%;">
                         Confirm Password
                     </td>
                     <td style="width: 15%;">
-                        <input id="txtConfirmPassword" type="password" name="ConfirmPassword" />
+                        <input id="txtConfirmPassword" class="validate[required,equals[txtPassword],maxSize[50]] text-input" type="password" name="ConfirmPassword" />
                     </td>
                 </tr>
                 <tr>
@@ -79,13 +83,13 @@
                         Title
                     </td>
                     <td>
-                        <input id="txtTitle" type="text" name="Title" />
+                        <input id="txtTitle" class="validate[optional,maxSize[8]] text-input" type="text" name="Title" />
                     </td>
                     <td>
                         Suffix
                     </td>
                     <td>
-                        <input id="txtSuffix" type="text" name="Suffix" />
+                        <input id="txtSuffix" class="validate[optional,maxSize[10]] text-input" type="text" name="Suffix" />
                     </td>
                 </tr>
                 <tr>
@@ -93,19 +97,19 @@
                         First Name
                     </td>
                     <td>
-                        <input id="txtFirstName" type="text" name="FirstName" />
+                        <input id="txtFirstName" class="validate[required,maxSize[50]] text-input" type="text" name="FirstName" />
                     </td>
                     <td>
                         Middle Name
                     </td>
                     <td>
-                        <input id="txtMiddleName" type="text" name="MiddleName" />
+                        <input id="txtMiddleName" class="validate[optional,maxSize[50]] text-input" type="text" name="MiddleName" />
                     </td>
                     <td>
                         Last Name
                     </td>
                     <td>
-                        <input id="txtLastName" type="text" name="LastName" />
+                        <input id="txtLastName" class="validate[required,maxSize[50]] text-input" type="text" name="LastName" />
                     </td>
                 </tr>
                 <tr>
@@ -113,19 +117,19 @@
                         Phone
                     </td>
                     <td>
-                        <input id="txtPhone" type="text" name="Phone" />
+                        <input id="txtPhone" class="validate[optional,maxSize[25]] text-input" type="text" name="Phone" />
                     </td>
                     <td>
                         Company Name
                     </td>
                     <td>
-                        <input id="txtCompanyName" type="text" name="CompanyName" />
+                        <input id="txtCompanyName" class="validate[optional,maxSize[128]] text-input" type="text" name="CompanyName" />
                     </td>
                     <td>
                         Email Address
                     </td>
                     <td>
-                        <input id="txtEmailAddress" type="text" name="EmailAddress" />
+                        <input id="txtEmailAddress" class="validate[optional,maxSize[50]] text-input" type="text" name="EmailAddress" />
                     </td>
                 </tr>
                 </table>
@@ -138,19 +142,19 @@
                         Address Line1
                     </td>
                     <td style="width: 15%;">
-                        <input id="txtBAddressLine1" type="text" name="BillingAddressLine1" />
+                        <input id="txtBAddressLine1" class="validate[required,maxSize[60]] text-input" type="text" name="BillingAddressLine1" />
                     </td>
                     <td style="width: 15%;">
                         Address Line2
                     </td>
                     <td style="width: 15%;">
-                        <input id="txtBAddressLine2" type="text" name="BillingAddressLine2" />
+                        <input id="txtBAddressLine2" class="validate[optional,maxSize[60]] text-input" type="text" name="BillingAddressLine2" />
                     </td>
                     <td style="width: 15%;">
                         City
                     </td>
                     <td style="width: 15%;">
-                        <input id="txtBCity" type="text" name="BillingCity" />
+                        <input id="txtBCity" class="validate[required,maxSize[30]] text-input" type="text" name="BillingCity" />
                     </td>
                 </tr>
                 <tr>
@@ -158,19 +162,19 @@
                         State Province
                     </td>
                     <td>
-                        <input id="txtBStateProvince" type="text" name="BillingStateProvince" />
+                        <input id="txtBStateProvince" class="validate[required,maxSize[50]] text-input" type="text" name="BillingStateProvince" />
                     </td>
                     <td>
                         Country Region
                     </td>
                     <td>
-                        <input id="txtBCountryRegion" type="text" name="BillingCountryRegion" />
+                        <input id="txtBCountryRegion" class="validate[required,maxSize[50]] text-input" type="text" name="BillingCountryRegion" />
                     </td>
                     <td>
                         Postal Code
                     </td>
                     <td>
-                        <input id="txtBPostalCode" type="text" name="BillingPostalCode" />
+                        <input id="txtBPostalCode" class="validate[required,maxSize[15]] text-input" type="text" name="BillingPostalCode" />
                     </td>
                 </tr>
                 </table>
@@ -183,19 +187,19 @@
                         Address Line1
                     </td>
                     <td style="width: 15%;">
-                        <input id="txtSAddressLine1" type="text" name="ShippingAddressLine1" />
+                        <input id="txtSAddressLine1" class="validate[required,maxSize[60]] text-input" type="text" name="ShippingAddressLine1" />
                     </td>
                     <td style="width: 15%;">
                         Address Line2
                     </td>
                     <td style="width: 15%;">
-                        <input id="txtSAddressLine2" type="text" name="ShippingAddressLine2" />
+                        <input id="txtSAddressLine2" class="validate[optional,maxSize[60]] text-input" type="text" name="ShippingAddressLine2" />
                     </td>
                     <td style="width: 15%;">
                         City
                     </td>
                     <td style="width: 15%;">
-                        <input id="txtSCity" type="text" name="ShippingCity" />
+                        <input id="txtSCity" class="validate[required,maxSize[30]] text-input" type="text" name="ShippingCity" />
                     </td>
                 </tr>
                 <tr>
@@ -203,24 +207,25 @@
                         State Province
                     </td>
                     <td>
-                        <input id="txtSStateProvince" type="text" name="ShippingStateProvince" />
+                        <input id="txtSStateProvince" class="validate[required,maxSize[50]] text-input" type="text" name="ShippingStateProvince" />
                     </td>
                     <td>
                         Country Region
                     </td>
                     <td>
-                        <input id="txtSCountryRegion" type="text" name="ShippingCountryRegion" />
+                        <input id="txtSCountryRegion" class="validate[required,maxSize[50]] text-input" type="text" name="ShippingCountryRegion" />
                     </td>
                     <td>
                         Postal Code
                     </td>
                     <td>
-                        <input id="txtSPostalCode" type="text" name="ShippingPostalCode" />
+                        <input id="txtSPostalCode" class="validate[required,maxSize[15]] text-input" type="text" name="ShippingPostalCode" />
                     </td>
                 </tr>
             </table>
          </fieldset>
-            <input type="submit" id="btnContinue" value="Continue" />
+            <input type="button" id="btnsubmitOrder" value="submit order" />
+            <input type="submit" id="btnRegister" value="Register" />
             <input type="reset" id="btnReset" value="Reset" />
         </form>
     </div>

@@ -27,6 +27,7 @@
     </script>
     <script id="CartProductTemplate" type="text/x-jquery-tmpl"> 
         <tr>
+            <td style="display:none;">${ ProductID }</td>
             <td>${ ProductCode }</td>
             <td>${ Quantity }</td>
             <td>${ Price }</td>
@@ -97,7 +98,7 @@
                     <tr>
                         <th colspan="2">Total cart Price</th>
                         <th id="lblCartTotal" style="text-align:left;">0.00</th>
-                        <th><a href="CheckOut.htm" class="checkOutCart"><img alt='Check Out' title='Check Out' src="../Images/cart.gif" /></a></th>
+                        <th><a href="#" onclick="ChecOutItem();" class="checkOutCart"><img alt='Check Out' title='Check Out' src="../Images/cart.gif" /></a></th>
                     </tr>
                 </tbody>
             </table>

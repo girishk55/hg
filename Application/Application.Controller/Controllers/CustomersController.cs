@@ -49,7 +49,7 @@ namespace Application.Controller.Controllers
         /// </summary>
         /// <returns></returns>
         [EnableCors]
-        public CustomerDTO PostCustomer(CustomerDTO customer)
+        public int PostCustomer(CustomerDTO customer)
         {
             loggerService.Logger().Info("Calling with parameter as : customer: " + customer );
             return _customerManager.SaveOrUpdateCustomer(customer);

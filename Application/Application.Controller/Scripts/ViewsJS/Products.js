@@ -66,6 +66,7 @@ $(function () {
             $("#lblCartTotal").html(totalPrice.toFixed(2));
             var cartData = [];
             cartData.push({
+                'ProductID': selectedItem.data.ProductID,
                 'ProductCode': selectedItem.data.ProductNumber,
                 'Quantity': productQuantity,
                 'Price': (parseFloat(selectedItem.data.ListPrice) * parseFloat(productQuantity)).toFixed(2)
@@ -111,3 +112,19 @@ function AddToCart(listPrice, productId) {
     }
 }
 
+function Product(productID, quantity, price) {
+    this.productID = productID;
+    this.quantity = quantity;
+}
+
+
+function ChecOutItem() {
+    var myArray = new Array();
+
+    $('#cartData tr').each(function () {
+        var obj = this.cells[0].innerHTML + '|' + this.cells[2].innerHTML;
+        myArray.push(obj);
+    });
+
+    window.location.replace("checkout.htm?cart=" + myArray);
+}

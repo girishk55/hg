@@ -148,8 +148,6 @@ D:\AnandPandey\Article\Code-Source\5thMarch\Application\Application\Application.
 D:\AnandPandey\Article\Code-Source\5thMarch\Application\Application\Application.Controller\obj\Debug\ResolveAssemblyReference.cache
 D:\AnandPandey\Article\Code-Source\5thMarch\Application\Application\Application.Controller\obj\Debug\Application.Controller.dll
 D:\AnandPandey\Article\Code-Source\5thMarch\Application\Application\Application.Controller\obj\Debug\Application.Controller.pdb
-D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\obj\Debug\ResolveAssemblyReference.cache
-D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\obj\Debug\Application.Controller.dll
 D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\bin\Application.Controller.dll
 D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\bin\Application.Controller.pdb
 D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\bin\Application.DAL.dll
@@ -197,4 +195,6 @@ D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\
 D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\bin\System.Web.WebPages.xml
 D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\bin\System.Web.WebPages.Deployment.xml
 D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\bin\System.Web.WebPages.Razor.xml
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\obj\Debug\ResolveAssemblyReference.cache
+D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\obj\Debug\Application.Controller.dll
 D:\AnandPandey\Article\Code-Source\POCWebAPI\Application\Application.Controller\obj\Debug\Application.Controller.pdb
