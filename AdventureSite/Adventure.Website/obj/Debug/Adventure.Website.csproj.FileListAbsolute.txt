@@ -1,0 +1,5 @@
+D:\AnandPandey\Article\Code-Source\Codeplex\AdventureSite\Adventure.Website\bin\Adventure.Website.dll
+D:\AnandPandey\Article\Code-Source\Codeplex\AdventureSite\Adventure.Website\bin\Adventure.Website.pdb
+D:\AnandPandey\Article\Code-Source\Codeplex\AdventureSite\Adventure.Website\obj\Debug\ResolveAssemblyReference.cache
+D:\AnandPandey\Article\Code-Source\Codeplex\AdventureSite\Adventure.Website\obj\Debug\Adventure.Website.dll
+D:\AnandPandey\Article\Code-Source\Codeplex\AdventureSite\Adventure.Website\obj\Debug\Adventure.Website.pdb

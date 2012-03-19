@@ -1,0 +1,140 @@
+﻿#categories { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    float:left;
+    width: 100%; 
+    font-size:small;
+    font-weight:bold;
+}
+
+#categories li { 
+    padding: 1px; 
+    float: left;
+    width: 23%;
+    text-align: justify;
+    height:130px;
+    background:white;
+    border:5px solid #736F6E;
+}
+
+#categories li h1 
+{
+    padding: 0;
+    margin: 0;
+    text-align:center;
+    background:#736F6E;
+    color:#ffffff;
+    border:none;
+}
+#divProduct
+{
+    width: 100%;
+}
+
+#tblLeft
+{
+    float: left;
+    clear: right;
+    width: 70%;
+    border-collapse: collapse;
+    background-color: #e4e3e3;
+    color:#55556f;
+    margin: 0px 10px 0px 0px ;
+    text-align:left;
+}
+
+#tblLeft td
+{
+    border-bottom: 1px solid #bbbbbb;
+    border-top: 1px solid #ffffff;
+    padding: 10px;
+}
+#tblLeft th
+{
+    font-weight: bold;
+    border-bottom: 1px solid #bbbbbb;
+    border-top: 1px solid #ffffff;
+    padding: 10px;
+}
+#tblLeft tbody
+{
+    border-bottom: 1px solid #bbbbbb;
+    border-top: 1px solid #ffffff;
+}
+
+#tblRight
+{
+    float: left;
+    clear: right;
+    border-collapse: collapse;
+    width: 25%;
+    background-color: #ffffff;
+    font-size:smaller;
+    text-align:left;
+}
+
+#tblRight td
+{
+    border-bottom: 1px solid #bbbbbb;
+    border-top: 1px solid #ffffff;
+    padding: 3px;
+    background-color: #e3eec4;
+}
+#tblRight th
+{
+    font-weight: bold;
+    border-bottom: 1px solid #bbbbbb;
+    border-top: 1px solid #ffffff;
+    background-color: #a8cc46;
+    color: #ffffff;
+    padding: 1px;
+}
+#tblRight tbody
+{
+    border-bottom: 1px solid #bbbbbb;
+    border-top: 1px solid #ffffff;
+}
+
+.menuButton
+{
+}
+.AddToCart
+{
+    padding-left : 20px;
+    vertical-align:top;
+}
+.subMenu
+{
+    padding-left : 10px;
+    padding-right : 10px;
+}
+
+.quantityText
+{
+    width:30px;
+    font-size:smaller;
+    height:15px;
+}
+
+#divCartProducts
+{
+    width: 300px;
+    float: left;
+    width: 30%;
+}
+
+.subMenu a {
+color: #736F6E;
+font-size: 12px;
+text-decoration: underline;
+}
+.subMenu a:visited {
+color: #736F6E;
+font-size: 12px;
+}
+.subMenu a:hover {
+color: Navy;
+font-size: 12px;
+text-decoration: underline;
+}

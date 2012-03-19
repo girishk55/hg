@@ -1,0 +1,121 @@
+﻿.column
+{
+    float: left;
+    width: 100%;
+    padding: 0;
+    margin: 5px 0;
+    vertical-align:middle;
+}
+
+form ol {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+form li {
+    padding: 1px;
+    margin: 3px;
+}
+
+form input[type="text"] 
+{
+    width: 100%;
+}
+#SalesDetails { 
+    list-style-type: none; 
+    width: 90%; 
+    vertical-align:middle;
+    font-weight:bold;
+}
+
+#SalesDetails li { 
+    padding: 1px; 
+    float: left;
+    width: 100%;
+    text-align: left;
+    background:#E0F2F7;
+}
+
+#SalesDetails li h4 
+{
+    padding: 0;
+    margin: 0;
+    text-align:center;
+    font-weight:bold;
+    background:#4d9aee;
+    border:none;
+}
+
+#ProductsDetails{ 
+    list-style-type: none; 
+}
+
+.Left
+{
+    float: Left;
+    width: 100%;
+    padding: 0;
+    text-align:right;
+    font-weight:normal;
+}
+
+.BoldLeft
+{
+    float: Left;
+    width: 100%;
+    padding: 0;
+    text-align:left;
+    font-weight:bold;
+}
+
+
+.Right
+{
+    float: Left;
+    width: 50%;
+    padding: 0;
+    text-align:right;
+    font-weight:normal;
+}
+.BoldRight
+{
+    float: Left;
+    width: 50%;
+    padding: 0;
+    margin: 5px 0;
+    text-align:right;
+    font-weight:Bold;
+}
+
+.TopLeft
+{
+    float: left;
+    width: 35%;
+    padding: 0;
+    margin: 5px 0;
+}
+
+.TopMiddle
+{
+    float: left;
+    width: 35%;
+    padding: 0;
+    margin: 5px 0;
+}
+
+.TopRight
+{
+    float: left;
+    width: 100%;
+    padding: 0;
+    margin: 5px 0;
+    text-align:right;
+}
+
+.ShopAgain
+{
+    text-align:right; 
+    margin-right:80px;
+}
+

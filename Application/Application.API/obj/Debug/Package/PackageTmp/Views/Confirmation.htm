@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Order Confirmation</title>
+    <link href="../Content/Invoice.css" rel="stylesheet" type="text/css" />
+    <link href="http://ajax.microsoft.com/ajax/jquery.ui/1.8.9/themes/ui-lightness/jquery-ui.css"
+        rel="stylesheet" type="text/css" />    
+    <script type="text/javascript" src="../Scripts/jquery-1.6.2.js"></script>
+    <script src="../Scripts/jquery-ui-1.8.11.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jQuery.tmpl.js" type="text/javascript"></script>
+    <script src="../Scripts/ViewsJS/Confirmation.js" type="text/javascript"></script>
+</head>
+<body>
+    <script id="SalesTemplate" type="text/html">
+            <li class="ui-widget-content ui-corner-all">
+                <h4 class="ui-widget-header">Invoice for Order Number : ${ PurchaseOrderNumber }</h4>
+                <fieldset>
+                    <div class="TopRight">Date : ${ OrderDate } </div>
+                </fieldset>
+                <fieldset>
+                    <div class="TopRight">${ Title } ${ FirstName } ${ MIddleName } ${ LastName } </div>
+                    <div class="Left">${ BillingAddressLine1 } </div>
+                    <div class="Left">${ BillingAddressLine2 } </div>
+                    <div class="Left">${ BillingCity },  ${ BillingStateProvince } </div>
+                    <div class="Left">${ BillingCountryRegion } - ${ BillingPostalCode } </div>
+                </fieldset>
+                <fieldset>
+                </fieldset>
+                <fieldset>
+                    <ul id="ProductsDetails">
+                    </ul>
+                </fieldset>
+                <fieldset>
+                    <div class="Right"> Sub Total : </div><div class="Right">${ SubTotal } </div>
+                    <div class="Right"> Tax Amount : </div><div class="Right">${ TaxAmt } </div>
+                    <div class="Right"> Freight : </div><div class="Right">${ Freight } </div>
+                    <div class="BoldRight"> Total : </div><div class="BoldRight">${ TotalDue } </div>
+                </fieldset>
+            </li>
+    </script>
+    <script id="ProductTemplate" type="text/html">
+            <li>
+                <div class="Right"> ${ Name }  ( ${ OrderQty }  * ${ UnitPrice } )</div><div class="Right">${ LineTotal } </div>
+            </li>
+    </script>
+    <div id="divMain">
+        <div id="divConfiration">
+            <ul id="SalesDetails">
+            </ul>
+        </div>
+    </div>
+    <div class="ShopAgain">
+        <input type="button" id="btnShopAgain" value="Shop Again" />
+    </div>
+</body>
+</html>

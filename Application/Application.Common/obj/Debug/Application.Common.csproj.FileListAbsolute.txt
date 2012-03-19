@@ -1,0 +1,10 @@
+D:\AnandPandey\Article\Code-Source\Codeplex\Application\Application.Common\bin\Debug\Application.Common.dll
+D:\AnandPandey\Article\Code-Source\Codeplex\Application\Application.Common\bin\Debug\Application.Common.pdb
+D:\AnandPandey\Article\Code-Source\Codeplex\Application\Application.Common\obj\Debug\ResolveAssemblyReference.cache
+D:\AnandPandey\Article\Code-Source\Codeplex\Application\Application.Common\obj\Debug\Application.Common.dll
+D:\AnandPandey\Article\Code-Source\Codeplex\Application\Application.Common\obj\Debug\Application.Common.pdb
+D:\AnandPandey\Article\Code-Source\Codeplex\Application\Application.Common\bin\Debug\log4net.dll
+D:\AnandPandey\Article\Code-Source\Codeplex\Application\Application.Common\bin\Debug\Newtonsoft.Json.dll
+D:\AnandPandey\Article\Code-Source\Codeplex\Application\Application.Common\bin\Debug\log4net.xml
+D:\AnandPandey\Article\Code-Source\Codeplex\Application\Application.Common\bin\Debug\Newtonsoft.Json.pdb
+D:\AnandPandey\Article\Code-Source\Codeplex\Application\Application.Common\bin\Debug\Newtonsoft.Json.xml
