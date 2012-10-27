@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using System.Web.Http;
-using Application.Common.Log;
-using Application.Model;
+﻿using Application.Common.Contracts;
 using Application.Common.Filters;
-using Application.Service;
+using Application.Model;
+using Application.Service.Contracts;
+using System.Linq;
+using System.Web.Http;
 
 namespace Application.API.Controllers
 {

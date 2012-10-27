@@ -1,5 +1,5 @@
 ﻿ jQuery.support.cors = true;
- var salesAddress = "http://localhost:8080/api/sales";
+ var salesAddress = "http://localhost:30000/api/sales";
 
  $(function () {
      var SalesHeader = salesAddress + "/" + getUrlVars()["SalesHeader"];

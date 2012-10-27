@@ -1,8 +1,8 @@
-﻿using System.Web.Http;
-using Application.Service;
-using Application.Common.Log;
+﻿using Application.Common.Contracts;
 using Application.Common.Filters;
 using Application.Model.DTO;
+using Application.Service.Contracts;
+using System.Web.Http;
 
 namespace Application.API.Controllers
 {
@@ -22,6 +22,8 @@ namespace Application.API.Controllers
         /// </summary>
         /// <returns></returns>
         [EnableCors]
+        [System.Web.Http.AcceptVerbs("GET", "POST")]
+        [System.Web.Http.HttpGet]
         public CustomerDTO ValidateCustomer(int id, string password)
         {
             loggerService.Logger().Info("Calling with parameter as : id and password: " + id + " and " + password);

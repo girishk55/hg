@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Application.Model;
+using System;
 
-namespace Application.DAL
+namespace Application.DAL.Contracts
 {
     public interface IDatabaseFactory : IDisposable
     {

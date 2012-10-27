@@ -1,5 +1,5 @@
 ﻿
-namespace Application.DAL
+namespace Application.DAL.Contracts
 {
     public interface IUnitOfWork
     {

@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{95C955C2-951D-4EF5-B835-DCA7E1854597}</ProjectGuid>
+    <ProjectGuid>{4FB4A8B4-AEB2-4892-862E-986B7FC53D18}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Application.Service</RootNamespace>
     <AssemblyName>Application.Service</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,25 +40,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerService.cs" />
-    <Compile Include="ICustomerService.cs" />
-    <Compile Include="IProductService.cs" />
-    <Compile Include="ISalesService.cs" />
-    <Compile Include="ProductService.cs" />
+    <Compile Include="Contracts\ICustomerService.cs" />
+    <Compile Include="Contracts\IProductService.cs" />
+    <Compile Include="Contracts\ISalesService.cs" />
+    <Compile Include="Implementations\CustomerService.cs" />
+    <Compile Include="Implementations\ProductService.cs" />
+    <Compile Include="Implementations\SalesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SalesService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application.DAL\Application.DAL.csproj">
-      <Project>{58844E79-6FD5-4B2F-BDF8-6A48EC86C9DF}</Project>
+      <Project>{8bdcd580-025a-4fbc-bb3c-e015af7d2496}</Project>
       <Name>Application.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Application.Model\Application.Model.csproj">
-      <Project>{74EFBD2F-2C9F-46A6-91F9-7779E52C0931}</Project>
+      <Project>{f192d525-50f8-4a56-83e2-63cca1d6b5dd}</Project>
       <Name>Application.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Application.Repository\Application.Repository.csproj">
-      <Project>{43C6CE2A-C0D2-4607-B407-73F5095D0F4C}</Project>
+      <Project>{bd5f4e57-98d5-4172-9f91-9c01fccf9dbd}</Project>
       <Name>Application.Repository</Name>
     </ProjectReference>
   </ItemGroup>

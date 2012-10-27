@@ -1,7 +1,7 @@
 ﻿ jQuery.support.cors = true;
- var customersAddress = "http://localhost:8080/api/customers";
- var salesAddress = "http://localhost:8080/api/sales";
-var URL = "http://localhost:8080/api/";
+ var customersAddress = "http://localhost:30000/api/customers";
+ var salesAddress = "http://localhost:30000/api/sales";
+var URL = "http://localhost:30000/api/";
 
 $(function () {
     jQuery("#customerInformation").validationEngine();
