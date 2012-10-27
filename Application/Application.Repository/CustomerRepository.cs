@@ -1,7 +1,6 @@
-using System;
-using Application.DAL;
+﻿using Application.DAL.Contracts;
+using Application.DAL.Implementations;
 using Application.Model;
-using System.Linq;
 
 namespace Application.Repository
 {
@@ -31,5 +30,4 @@ namespace Application.Repository
     public interface ICustomerRepository : IRepository<Customer>
     {
     }
-
 }

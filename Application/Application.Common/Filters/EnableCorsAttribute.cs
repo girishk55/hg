@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using System.Web.Http.Filters;
+﻿using System.Web.Http.Filters;
+using System.Linq;
 
 namespace Application.Common.Filters
 {
@@ -15,7 +15,7 @@ namespace Application.Common.Filters
                 string originHeader = actionExecutedContext.Request.Headers.GetValues(Origin).FirstOrDefault();
                 if (!string.IsNullOrEmpty(originHeader))
                 {
-                    actionExecutedContext.Result.Headers.Add(AccessControlAllowOrigin, originHeader);
+                    actionExecutedContext.Response.Headers.Add(AccessControlAllowOrigin, originHeader);
                 }
             }
         }

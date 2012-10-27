@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Application.DAL
+namespace Application.DAL.Contracts
 {
     public interface IRepository<T> where T : class
     {
@@ -14,6 +14,6 @@ namespace Application.DAL
         T GetById(string Id);
         T Get(Expression<Func<T, bool>> where);
         IEnumerable<T> GetAll();
-        IEnumerable<T> GetMany(Expression<Func<T, bool>> where);   
+        IEnumerable<T> GetMany(Expression<Func<T, bool>> where);
     }
 }

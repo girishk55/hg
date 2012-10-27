@@ -1,8 +1,8 @@
-﻿using System.Web.Http;
-using Application.Common.Log;
+﻿using Application.Common.Contracts;
 using Application.Common.Filters;
-using Application.Service;
 using Application.Model.DTO;
+using Application.Service.Contracts;
+using System.Web.Http;
 
 namespace Application.API.Controllers
 {

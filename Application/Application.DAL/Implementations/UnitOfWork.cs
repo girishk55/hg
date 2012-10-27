@@ -1,5 +1,7 @@
-﻿
-namespace Application.DAL
+﻿using Application.DAL.Contracts;
+using Application.Model;
+
+namespace Application.DAL.Implementations
 {
     public class UnitOfWork : IUnitOfWork
     {

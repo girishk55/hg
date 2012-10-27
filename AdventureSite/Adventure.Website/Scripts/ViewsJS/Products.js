@@ -1,5 +1,5 @@
 ﻿jQuery.support.cors = true;
-var productcategoriesAddress = "http://localhost:8080/api/products/";
+var productcategoriesAddress = "http://localhost:30000/api/products/";
 
 $(function () {
     $('#tblRight').hide();
